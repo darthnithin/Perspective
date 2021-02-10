@@ -11,7 +11,8 @@ client.once('ready', () => {
 
 client.on('message', message => {
 	if (message.content === '>ping') {
-		message.channel.send('Pong.');
+		message.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms`);
+        
 	}
     else if(message.content === '>resetusername') {
         // console.log(message.guild.members)
@@ -23,7 +24,7 @@ client.on('message', message => {
             message.delete({timeout: 10, reason: 'Done!'})
         }
     }
-    if(message.content.includes('mute')) {
+    if(message.content.includes('mute') && !message.author.bot) {
         const embed = {
             "description": "[[MUTE]](https://photricity.com/flw/ec/secure/)",
             "color": 1005317,
@@ -44,10 +45,15 @@ client.on('message', message => {
             message.delete
         }
     }
+    if(message.author.id == '235148962103951360') {
+        if(message.deletable) {
+            message.delete
+        }
+    }
     try{
         if (message.content.startsWith('>rate ',0)) {
             const cont = message.content.substring('>rate '.length,message.content.length);
-
+            
             (async () => {
                 let text = cont;
                 const result = await perspective.analyze(text);
@@ -55,14 +61,14 @@ client.on('message', message => {
                 score = result.attributeScores.TOXICITY.summaryScore.value;
                 let pre = String(round(score, 2))
                 let rounded = pre.substring(2, pre.length)
-                console.log(score);
+               // console.log(score);
                 message.reply(rounded + '%')
             })();
         }
     }
     catch{}
     finally{}
-    if(message.content && (message.channel.id == '808915103717785630' || message.channel.id == '784278934971088911')  && !message.author.bot && !message.content.startsWith('>rate ',0) && message.content != '') {
+    if(message.content && (message.channel.id == '808915103717785630' || message.channel.id == '784278934971088911')  && !message.author.bot && message.content != '') {
         (async () => {
             try{ 
                 let text = message.content
