@@ -83,9 +83,9 @@ client.on('message', message => {
                     message.reply(rounded + '%');
                     message.author.send("Hey! Your message sent in " + message.channel.name + ' in the ' + message.guild.name + 'server was Flagged 🏳. Please reply to appeal to a moderator.')
                     message.author.send(log)
-                    if(message.deletable) {
-                        message.delete()
-                    }
+                    //if(message.deletable) {
+                    //    message.delete()
+                    //}
 
                     console.log(log);
                 }
