@@ -1,0 +1,7 @@
+{
+    "name": "Perspective Moderation",
+    "description": "A Discord Bot that leverages Google's Perspecive API to provide machine learning powered moderation tools and automoderation to communities on discord.",
+    "repository": "https://github.com/darthnithin/Perspective",
+
+    "keywords": ["node", "discord", "perspective API"]
+  }
